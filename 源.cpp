@@ -6,16 +6,16 @@ class csqure
 {
 public:
 	int a;
-	csqure(int a_);
-	csqure();
+	csqure(int a_=0);
+	csqure(csqure &d);
 	int areasq();
 	int lsq();
 	~csqure();
 	 static int  sumnum;
 };
-csqure::csqure()
+csqure::csqure(csqure &d)
 {
-	a = 0;
+	a = d.a+5;
 }
 csqure::csqure(int a_)
 {
@@ -39,7 +39,7 @@ int csqure::sumnum = 0;
 int main()
 {
 	csqure s(3);
-	csqure sa;
+	csqure sa(s);
 	/*csqure* p = new csqure(1);
 	cout << s.sumnum << endl;
 	delete p;
