@@ -4,28 +4,23 @@
 #include <string.h>
 #include <math.h>
 using namespace std;
-class Point
+class Recetangle
 {
+private:
+	int length;
+	int width;
 public:
-	int x;
-	int y;
-	Point(int a, int b) :x(a), y(b) {};
-	double distance(Point p1, Point p2);
-	Point() { x = 0; y = 0; };
+	Recetangle(int a, int b) :length(a), width(b) {};
+	Recetangle() { length = 0, width = 0; };
+	friend int area(Recetangle s);
 };
-double Point::distance(Point p1, Point p2)
+int area(Recetangle s)
 {
-	int s1 = abs(p1.y * p1.y - p2.y * p2.y);
-	int s2 = abs(p1.x * p1.x - p2.x * p2.x);
-	double s = s1 + s2;
-	return sqrt(s);
+	return s.length * s.width;
 }
 int main()
 {
-	Point s1(3, 0);
-	Point s2(0, 4);
-	Point s3;
-	cout << s1.distance(s1, s2) << endl;
-	cout << s1.distance(s1, s3);
+	Recetangle s1(3, 4);
+	cout << area(s1);
 	return 0;
 }
