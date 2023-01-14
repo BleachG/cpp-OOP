@@ -1,51 +1,31 @@
-#include <iostream>
+#define _CRT_SECURE_NO_WARNINGS
 #define max(a,b) (a>b?a:b)
-
+#include <iostream>
+#include <string.h>
+#include <math.h>
 using namespace std;
-class csqure
+class Point
 {
 public:
-	int a;
-	csqure(int a_=0);
-	csqure(csqure &d);
-	int areasq();
-	int lsq();
-	~csqure();
-	 static int  sumnum;
+	int x;
+	int y;
+	Point(int a, int b) :x(a), y(b) {};
+	double distance(Point p1, Point p2);
+	Point() { x = 0; y = 0; };
 };
-csqure::csqure(csqure &d)
+double Point::distance(Point p1, Point p2)
 {
-	a = d.a+5;
+	int s1 = abs(p1.y * p1.y - p2.y * p2.y);
+	int s2 = abs(p1.x * p1.x - p2.x * p2.x);
+	double s = s1 + s2;
+	return sqrt(s);
 }
-csqure::csqure(int a_)
-{
-	a = a_;
-	sumnum++;
-}
-csqure::~csqure()
-{
-	sumnum--;
-}
-int csqure::areasq()
-	{
-
-		return a * a;
-	}
-int csqure::lsq()
-{
-	return 4 * a;
-}
-int csqure::sumnum = 0;
 int main()
 {
-	csqure s(3);
-	csqure sa(s);
-	/*csqure* p = new csqure(1);
-	cout << s.sumnum << endl;
-	delete p;
-	cout << s.lsq() << endl;*/
-	cout << s.areasq() << endl;
-	cout << sa.areasq() << endl;
-	/*cout << s.sumnum << endl;*/
+	Point s1(3, 0);
+	Point s2(0, 4);
+	Point s3;
+	cout << s1.distance(s1, s2) << endl;
+	cout << s1.distance(s1, s3);
 	return 0;
 }
