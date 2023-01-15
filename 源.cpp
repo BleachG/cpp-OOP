@@ -44,7 +44,7 @@ int main()
 	cin >> h;
 	cin >> r;
 	roundtable s(a, h, r);
-	cout << s.area() << " " << s.show();
+	cout << s.area() << " " << s.show()<<endl;
 	s.showcolor();
 	return 0;
 }
