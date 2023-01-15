@@ -2,25 +2,49 @@
 #define max(a,b) (a>b?a:b)
 #include <iostream>
 #include <string.h>
-#include <math.h>
 using namespace std;
-class Recetangle
+class circle
 {
 private:
-	int length;
-	int width;
+	int radious;
 public:
-	Recetangle(int a, int b) :length(a), width(b) {};
-	Recetangle() { length = 0, width = 0; };
-	friend int area(Recetangle s);
+   float area();
+   circle(int r) { radious = r; }
 };
-int area(Recetangle s)
+float circle::area()
 {
-	return s.length * s.width;
+	return 3.14 * radious * radious;
 }
+class table
+{
+private:
+	int height;
+public:
+	int show();
+	table(int h) :height(h) {};
+};
+int table::show()
+{
+	return height;
+}
+class roundtable :public circle, public table
+{
+private:
+	char color[20];
+public:
+	roundtable(char a[20], int h, int r) :circle(r), table(h) { strcpy(color, a); };
+	void showcolor() { cout << color; };
+};
 int main()
 {
-	Recetangle s1(3, 4);
-	cout << area(s1);
+	char a[20];
+	cout << "ÇëÊäÈëÑÕÉ«" << endl;
+	cin >> a;
+	int h, r;
+	cin >> h;
+	cin >> r;
+	roundtable s(a, h, r);
+	cout << s.area() << " " << s.show();
+	s.showcolor();
 	return 0;
 }
