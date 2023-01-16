@@ -3,48 +3,54 @@
 #include <iostream>
 #include <string.h>
 using namespace std;
-class circle
+class buliding
 {
-private:
-	int radious;
+	int floor;
+	int roomnum;
+	int sumarea;
 public:
-   float area();
-   circle(int r) { radious = r; }
+	buliding(int a, int b, int c) :floor(a), roomnum(b), sumarea(c) {};
+	void show();
 };
-float circle::area()
+void buliding::show()
 {
-	return 3.14 * radious * radious;
+	cout << floor << endl;
+	cout << roomnum << endl;
+	cout << sumarea << endl;
+
 }
-class table
+class houslding:public buliding
 {
-private:
-	int height;
+	int beedroom;
+	int washroom;
 public:
-	int show();
-	table(int h) :height(h) {};
+	houslding(int a, int b, int a_s, int b_s, int c_s) :beedroom(a), washroom(b), buliding(a_s, b_s, c_s) {};
+	void show();
 };
-int table::show()
+void houslding::show()
 {
-	return height;
+	cout << beedroom << endl;
+	cout << washroom << endl;
 }
-class roundtable :public circle, public table
+class office :public buliding
 {
-private:
-	char color[20];
+	int telephone;
+	int fire;
 public:
-	roundtable(char a[20], int h, int r) :circle(r), table(h) { strcpy(color, a); };
-	void showcolor() { cout << color; };
+	office(int a, int b, int a_s, int b_s, int c_s) :telephone(a),fire(b), buliding(a_s, b_s, c_s) {};
+	void show();
 };
+void office::show()
+{
+	cout << telephone << endl;
+	cout << fire << endl;
+}
 int main()
 {
-	char a[20];
-	cout << "ÇëÊäÈëÑÕÉ«" << endl;
-	cin >> a;
-	int h, r;
-	cin >> h;
-	cin >> r;
-	roundtable s(a, h, r);
-	cout << s.area() << " " << s.show()<<endl;
-	s.showcolor();
-	return 0;
+	office a(1, 2, 3, 4, 5);
+	houslding b(6, 7, 3, 4, 5);
+	a.show();
+	b.show();
+a.buliding::show();
+return 0;
 }
