@@ -3,25 +3,24 @@
 #include <iostream>
 #include <string.h>
 using namespace std;
-class squre
+class A
 {
-private:
-	int a;
 public:
-	squre(int m) :a(m) {}
-    virtual void getarea() { cout << a * a << endl; }
+	int n;
+	A(int a = 0) { n = a; }
+	A operator+(A a);
 };
-class recetangle : public squre
+A  A::operator+(A a)
 {
-private:
-	int m, n;
-public:
-  recetangle(int m_s,int n_s,int a_s):squre(a_s),m(m_s),n(n_s){}
-  void getarea() { cout << m * n<<endl; }
-};
+	A temp;
+	temp.n = n + a.n;
+	return temp;
+}
 int main()
 {
-	squre*a=new recetangle(2, 3, 1);
-	a->getarea();
-	return 0;
+	A m(1);
+	A n(2);
+	A a = A(1) + A(2);
+	A b = m.operator+(n);
+	cout << b.n << endl;
 }
