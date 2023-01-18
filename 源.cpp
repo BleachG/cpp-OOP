@@ -6,42 +6,43 @@ using namespace std;
 class A
 {
 public:
-	int n;
-	A(int a = 0) { n = a; }
-	friend A operator+(A &a,int m);
-	A operator++();
-	A operator--();
-	A operator++(int);
-	A operator--(int);
+	float a,b;
+	A(float m=0, float n=0) { a = m; b = n; };
+	A operator +(A p);
+	A operator -(A p);
+	A operator *(A p);
+	A operator /(A p);
 };
-A operator+(A &a,int m)
+A A::operator+(A p)
 {
-	a.n += m;
-	return a;
-}
-A A::operator++()
-{
-	++n;
+	a = a + p.a;
+	b = b + p.b;
 	return *this;
 }
-A A::operator--()
+A A::operator-(A p)
 {
-	--n;
+	a = a - p.a;
+	b = b - p.b;
 	return *this;
 }
-A A::operator++(int)
+A A::operator*(A p)
 {
-	n++;
+	float m = a;
+	a = a * p.a - b * p.b;
+	b = m * p.b + b * p.a;
 	return *this;
 }
-A A::operator--(int)
+A A::operator/(A p)
 {
-	n--;
+	float m = a;
+	a = a * p.a + b * p.b/(p.a*p.a+p.b*p.b);
+	b = b*p.a-m*p.b/(p.a * p.a + p.b * p.b);
 	return *this;
 }
 int main()
 {
-	A a(2);
-	a=a+2;
-	cout << a.n;
+	A a(1, 1);
+	A b(1, 0);
+	a = a / b;
+	cout << a.a << endl << a.b;
 }
