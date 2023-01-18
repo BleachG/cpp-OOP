@@ -8,19 +8,40 @@ class A
 public:
 	int n;
 	A(int a = 0) { n = a; }
-	A operator+(A a);
+	friend A operator+(A &a,int m);
+	A operator++();
+	A operator--();
+	A operator++(int);
+	A operator--(int);
 };
-A  A::operator+(A a)
+A operator+(A &a,int m)
 {
-	A temp;
-	temp.n = n + a.n;
-	return temp;
+	a.n += m;
+	return a;
+}
+A A::operator++()
+{
+	++n;
+	return *this;
+}
+A A::operator--()
+{
+	--n;
+	return *this;
+}
+A A::operator++(int)
+{
+	n++;
+	return *this;
+}
+A A::operator--(int)
+{
+	n--;
+	return *this;
 }
 int main()
 {
-	A m(1);
-	A n(2);
-	A a = A(1) + A(2);
-	A b = m.operator+(n);
-	cout << b.n << endl;
+	A a(2);
+	a=a+2;
+	cout << a.n;
 }
