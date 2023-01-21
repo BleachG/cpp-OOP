@@ -12,7 +12,29 @@ public:
 	A operator -(A p);
 	A operator *(A p);
 	A operator /(A p);
+	friend ostream& operator<<(ostream& os, A am);
+	friend istream& operator>>(istream& is, A& am);
 };
+ostream& operator<<(ostream& os, A am)
+{
+	os << "复数为:";
+	if (am.a != 0)
+	{
+		os << am.a ;
+	}
+	if (am.b != 0)
+	{
+		os << "+" << am.b << "i"<<endl;
+	}
+	return os;
+}
+istream& operator>>(istream& is, A& am)
+{
+	cout << "请输入复数" << endl;
+	is >> am.a;
+	is >> am.b;
+	return is;
+}
 A A::operator+(A p)
 {
 	a = a + p.a;
@@ -41,8 +63,8 @@ A A::operator/(A p)
 }
 int main()
 {
-	A a(1, 1);
-	A b(1, 0);
-	a = a / b;
-	cout << a.a << endl << a.b;
+	A a;
+	cin >> a;
+	cout << a;
+	return 0;
 }
