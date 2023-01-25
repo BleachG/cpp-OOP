@@ -5,13 +5,22 @@
 #include <fstream>
 using namespace std;
 template<class T>
-void add(T a, T b)
+class A
 {
-	cout << a + b << endl;
-}
+public:
+	T n;
+	A(T a) { n = a; }
+	void show() { cout << n << endl; }
+	A operator +(A m)
+	{
+		this->n = m.n + this->n;
+		return *this;
+	}
+};
 int main()
 {
-	float a = 1.3, b = 2.61;
-	add(a, b);
+	A<int> p(3), l(4);
+	p = p + l;
+	cout << p.n;
 	return 0;
 }
