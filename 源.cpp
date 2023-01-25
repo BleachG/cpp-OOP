@@ -4,23 +4,69 @@
 #include <string.h>
 #include <fstream>
 using namespace std;
-template<class T>
-class A
+template<class T,int maxsize=10>
+class arry
 {
 public:
-	T n;
-	A(T a) { n = a; }
-	void show() { cout << n << endl; }
-	A operator +(A m)
+	T arr[maxsize];
+     int size;
+	 arry()
+	 { 
+		 size = -1;
+	 }
+	T operator[](int i)
 	{
-		this->n = m.n + this->n;
-		return *this;
+		if (i < size)
+		{
+			return arr[i];
+		}
+		else
+		{
+			return arr[0];
+		}
+	}
+	void show()
+	{
+		int i = 0;
+		for (i = 0; i < size; i++)
+		{
+			cout << arr[i] << endl;
+		}
+	}
+	void pop(T i)
+	{
+		if (size < maxsize)
+		{
+			size++;
+			arr[size] = i;
+		}
+		else
+		{
+			cout << "Тњ\n" ;
+		}
+	}
+	void push()
+	{
+		if (size > 0)
+		{
+			arr[size] = 0;
+			size--;
+		}
+		else
+		{
+			cout << "Пе\n";
+		}
 	}
 };
 int main()
 {
-	A<int> p(3), l(4);
-	p = p + l;
-	cout << p.n;
+	arry<int>a;
+	int i = 0;
+	for (i = 0; i < 6; i++)
+	{
+		a.pop(i);
+	}
+	a.push();
+	a.show();
 	return 0;
 }
