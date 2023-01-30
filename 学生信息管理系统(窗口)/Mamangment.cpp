@@ -8,14 +8,14 @@
 	 readst();
 	 ::loadimage(&img, "1.png", Window::width(), Window::height());
 	 fl = 0;
-	 settextstyle(30, 0, "¿¬Ìå");
-	 //Ö÷½çÃæ°´Å¥³õÊ¼»¯
-	 menubt.push_back(new pushbotton("²é¿´Ñ§Éú"));
-	 menubt.push_back(new pushbotton("Ôö¼ÓÑ§Éú"));
-	 menubt.push_back(new pushbotton("É¾³ıÑ§Éú"));
-	 menubt.push_back(new pushbotton("ĞŞ¸ÄÑ§Éú"));
-	 menubt.push_back(new pushbotton("²éÕÒÑ§Éú"));
-	 menubt.push_back(new pushbotton("ÍË³ö"));
+	 settextstyle(30, 0, "æ¥·ä½“");
+	 //ä¸»ç•Œé¢æŒ‰é’®åˆå§‹åŒ–
+	 menubt.push_back(new pushbotton("æŸ¥çœ‹å­¦ç”Ÿ"));
+	 menubt.push_back(new pushbotton("å¢åŠ å­¦ç”Ÿ"));
+	 menubt.push_back(new pushbotton("åˆ é™¤å­¦ç”Ÿ"));
+	 menubt.push_back(new pushbotton("ä¿®æ”¹å­¦ç”Ÿ"));
+	 menubt.push_back(new pushbotton("æŸ¥æ‰¾å­¦ç”Ÿ"));
+	 menubt.push_back(new pushbotton("é€€å‡º"));
 	 for (int i = 0; i < menubt.size(); i++)
 	 {
 		 menubt[i]->setfixedsize(250,50);
@@ -110,11 +110,11 @@ void Mamangment::show()
 {
 	drawline();
 	int y = 20;
-	settextstyle(20, 0, "¿¬Ìå");
+	settextstyle(20, 0, "æ¥·ä½“");
 	int i = 0;
-	outtextxy(0, 0, "ĞÕÃû");
-	outtextxy(150, 0, "Ñ§ºÅ");
-	outtextxy(320, 0, "³É¼¨");
+	outtextxy(0, 0, "å§“å");
+	outtextxy(150, 0, "å­¦å·");
+	outtextxy(320, 0, "æˆç»©");
 	for (i = 0; i < stu.size(); i++)
 	{
 		if (stu[i].grade > 0)
@@ -134,15 +134,15 @@ void Mamangment::add()
 		char a[20] = { '\0' };
 		char b[20] = { '\0' };
 		char c[20] = { '\0' };
-		InputBox(a, 20, "ÇëÊäÈëĞÕÃû");
-		InputBox(b, 20, "ÇëÊäÈëÑ§ºÅ");
-		InputBox(c, 20, "ÇëÊäÈë³É¼¨");
-		//char*×ª»»Îªsting
+		InputBox(a, 20, "è¯·è¾“å…¥å§“å");
+		InputBox(b, 20, "è¯·è¾“å…¥å­¦å·");
+		InputBox(c, 20, "è¯·è¾“å…¥æˆç»©");
+		//char*è½¬æ¢ä¸ºsting
 		s.name = a;
 		s.number = b;
 		s.grade = atoi(c);
 		stu.push_back(s);
-		int isok = MessageBox(Window::Getwindow(), "Ôö¼ÓÍê³ÉÊÇ·ñ¼ÌĞøÔö¼Ó", "ÌáÊ¾¿ò", MB_OKCANCEL);
+		int isok = MessageBox(Window::Getwindow(), "å¢åŠ å®Œæˆæ˜¯å¦ç»§ç»­å¢åŠ ", "æç¤ºæ¡†", MB_OKCANCEL);
 		if (isok == IDCANCEL)
 		{
 			break;
@@ -158,7 +158,7 @@ void Mamangment::omit()
 		if (m != -1)
 		{
 			stu.erase(stu.begin()+m);
-			int isok = MessageBox(Window::Getwindow(), "É¾³ıÍê³ÉÊÇ·ñ¼ÌĞøÉ¾³ı", "ÌáÊ¾¿ò", MB_OKCANCEL);
+			int isok = MessageBox(Window::Getwindow(), "åˆ é™¤å®Œæˆæ˜¯å¦ç»§ç»­åˆ é™¤", "æç¤ºæ¡†", MB_OKCANCEL);
 			if (isok == IDCANCEL)
 			{
 				break;
@@ -166,7 +166,7 @@ void Mamangment::omit()
 		}
 		else
 		{
-			MessageBox(Window::Getwindow(), "Ñ§ºÅÊäÈë´íÎó", "¶Ô»°¿ò", MB_OK);
+			MessageBox(Window::Getwindow(), "å­¦å·è¾“å…¥é”™è¯¯", "å¯¹è¯æ¡†", MB_OK);
 			break;
 		}
 	}
@@ -178,7 +178,7 @@ void Mamangment::change()
 	int h = 0;
 	if (m == -1)
 	{
-		MessageBox(Window::Getwindow(), "Ñ§ºÅÊäÈë´íÎó", "¶Ô»°¿ò", MB_OK);
+		MessageBox(Window::Getwindow(), "å­¦å·è¾“å…¥é”™è¯¯", "å¯¹è¯æ¡†", MB_OK);
 		goto that;
 	}
 	else
@@ -186,29 +186,29 @@ void Mamangment::change()
 		char a[20];
 		string s;
 		here:
-		InputBox(a, 20, "ÇëÊäÈëÑ§ºÅ»òĞÕÃû»ò³É¼¨");
+		InputBox(a, 20, "è¯·è¾“å…¥å­¦å·æˆ–å§“åæˆ–æˆç»©");
 		s = a;
-		if (s == "Ñ§ºÅ")
+		if (s == "å­¦å·")
 		{
 			char b[20];
-			InputBox(b, 20, "ÇëÊäÈëÑ§ºÅ");
+			InputBox(b, 20, "è¯·è¾“å…¥å­¦å·");
 			stu[m].number = b;
 		}
-		else if (s == "ĞÕÃû")
+		else if (s == "å§“å")
 		{
 			char c[20];
-			InputBox(c, 20, "ÇëÊäÈëĞÕÃû");
+			InputBox(c, 20, "è¯·è¾“å…¥å§“å");
 			stu[m].name = c;
 		}
-		else if (s == "³É¼¨")
+		else if (s == "æˆç»©")
 		{
 			char d[20];
-			InputBox(d, 20, "ÇëÊäÈë³É¼¨");
+			InputBox(d, 20, "è¯·è¾“å…¥æˆç»©");
 			stu[m].grade = atoi(d);
 		}
 		else
 		{
-			MessageBox(Window::Getwindow(), "ÊäÈëĞŞ¸ÄÄÚÈİ´íÎó", "ÌáÊ¾¿ò", MB_OK);
+			MessageBox(Window::Getwindow(), "è¾“å…¥ä¿®æ”¹å†…å®¹é”™è¯¯", "æç¤ºæ¡†", MB_OK);
 			goto here;
 		}
 		h = 1;
@@ -217,7 +217,7 @@ void Mamangment::change()
 	{
 		if (m !=0&&h==1)
 		{
-			int isok = MessageBox(Window::Getwindow(), "ĞŞ¸ÄÍê³ÉÊÇ·ñ¼ÌĞøĞŞ¸Ä", "ÌáÊ¾¿ò", MB_OKCANCEL);
+			int isok = MessageBox(Window::Getwindow(), "ä¿®æ”¹å®Œæˆæ˜¯å¦ç»§ç»­ä¿®æ”¹", "æç¤ºæ¡†", MB_OKCANCEL);
 			if (isok == IDCANCEL)
 			{
 				break;
@@ -233,17 +233,17 @@ void Mamangment::find(int m)
 		{
 			fl = 1;
 			drawline();
-			settextstyle(20, 0, "¿¬Ìå");
-			outtextxy(0, 0, "ĞÕÃû");
-			outtextxy(150, 0, "Ñ§ºÅ");
-			outtextxy(320, 0, "³É¼¨");
+			settextstyle(20, 0, "æ¥·ä½“");
+			outtextxy(0, 0, "å§“å");
+			outtextxy(150, 0, "å­¦å·");
+			outtextxy(320, 0, "æˆç»©");
 			outtextxy(0, 20, stu[m].name.c_str());
 			outtextxy(150, 20, stu[m].number.c_str());
 			outtextxy(320, 20, to_string(stu[m].grade).c_str());
 		}
 		else
 		{
-			MessageBox(Window::Getwindow(), "Ñ§ºÅÊäÈë´íÎó", "¶Ô»°¿ò", MB_OK);
+			MessageBox(Window::Getwindow(), "å­¦å·è¾“å…¥é”™è¯¯", "å¯¹è¯æ¡†", MB_OK);
 			fl = 2;
 		}
 }
@@ -258,7 +258,7 @@ void Mamangment::quit()
 int Mamangment::match()
 {
 	char b[20] = { '\0' };
-	InputBox(b, 20, "ÇëÊäÈëÑ§ºÅ");
+	InputBox(b, 20, "è¯·è¾“å…¥å­¦å·");
 	int i = 0;
 	for (i = 0; i < stu.size(); i++)
 	{
@@ -290,15 +290,12 @@ void Mamangment::readst()
 	file.open("student.txt");
 	if (file.fail())
 	{
-		cout << "ÎÄ¼ş´ò¿ªÊ§°Ü" << endl;
+		cout << "æ–‡ä»¶æ‰“å¼€å¤±è´¥" << endl;
 	}
 	while (!file.eof())
 	{
-		char buf[1024] = { '\0' };
-		file.getline(buf, 1024);
 		student s;
-		stringstream ss(buf);
-		ss >> s.name >> s.number >> s.grade;
+		file >> s.name >> s.number >> s.grade;
 		stu.push_back(s);
 	}
 	file.close();
@@ -309,7 +306,7 @@ void Mamangment::writest()
 	file.open("student.txt");
 	if (file.fail())
 	{
-		cout << "ÎÄ¼ş´ò¿ªÊ§°Ü" << endl;
+		cout << "æ–‡ä»¶æ‰“å¼€å¤±è´¥" << endl;
 	}
 	for (int i = 0; i < stu.size(); i++)
 	{
